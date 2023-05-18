@@ -73,6 +73,7 @@ public:
     Stock* data;
     // pointer to the next node in the list 
     Node* next;
+    Node* prev;
 };
 
 #endif // NODE_H
