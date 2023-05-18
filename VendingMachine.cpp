@@ -377,17 +377,17 @@ bool VendingMachine::loadStock()
 
             
             // Check correct amount of fields
-            if (tokens.size() != 5) {
+            if (tokens.size() != 6) {
                 loadSuccess = false;
                 cout << "ERROR: Incorrect amount fields in stock entry" << endl;
             }
             // Check float/int for price
-            else if (!Helper::isNumber(tokens[3])){
+            else if (!Helper::isNumber(tokens[4])){
                 loadSuccess = false;
                 cout << "ERROR: Price is not a number." << endl;
             }
             // Check int for stock
-            else if (!(Helper::isNumber(tokens[4]) && tokens[4].find(".") == std::string::npos)){
+            else if (!(Helper::isNumber(tokens[5]) && tokens[4].find(".") == std::string::npos)){
                 loadSuccess = false;
                 cout << "ERROR: Stock amount is not a integer." << endl;
             }
@@ -396,19 +396,19 @@ bool VendingMachine::loadStock()
 
                 Stock* data = new Stock;
 
-                data->id = tokens[0];
-                data->name = tokens[1];
-                data->description = tokens[2];
+                data->id = tokens[1];
+                data->name = tokens[2];
+                data->description = tokens[3];
                 
                 // Seperating the Dollar and Cent
-                int tempDollar = std::stoi(tokens[3]);
-                float tempPrice = std::stof(tokens[3]);
+                int tempDollar = std::stoi(tokens[4]);
+                float tempPrice = std::stof(tokens[4]);
                 int result = static_cast<int>((tempPrice - tempDollar) * 100);
 
                 data->price.dollars = tempDollar;
                 data->price.cents =  result;
 
-                data->on_hand = std::stoul(tokens[4]);
+                data->on_hand = std::stoul(tokens[5]);
 
                 stock_list->insertStock(data);
             }
