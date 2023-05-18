@@ -381,6 +381,9 @@ bool VendingMachine::loadStock()
                 loadSuccess = false;
                 cout << "ERROR: Incorrect amount fields in stock entry" << endl;
             }
+
+            // TODO 
+            // CHECK POSITION 1 if IT IS IN THE 2D ARRAY, IF YES NEW LIST, IF NOT, NO NEW LIST
             // Check float/int for price
             else if (!Helper::isNumber(tokens[4])){
                 loadSuccess = false;
