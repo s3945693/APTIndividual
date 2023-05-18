@@ -1,0 +1,8 @@
+1
+4
+Chicken Burger
+Yummy burger with chicken, mayo and lettuce
+Invalid price
+4.50
+1
+9

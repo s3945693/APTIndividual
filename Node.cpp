@@ -1,0 +1,19 @@
+#include "Node.h"
+
+Node::Node(){
+    data = new Stock;
+    next = nullptr;
+};
+
+Node::Node(Stock* stock){
+    data = stock;
+    next = nullptr;
+};
+
+Node::~Node(){
+    delete data;
+};
+
+std::string Node::name(){
+    return this->data->name;
+}

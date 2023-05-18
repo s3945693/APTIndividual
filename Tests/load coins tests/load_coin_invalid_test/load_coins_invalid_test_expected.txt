@@ -1,0 +1,2 @@
+ERROR: Incorret coin format
+ERROR: Incorret number of rows in coin file

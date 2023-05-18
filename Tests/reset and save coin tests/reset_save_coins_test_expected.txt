@@ -1,0 +1,81 @@
+
+Main Menu
+    1. Display Items
+    2. Purchase Items
+    3. Save and Exit
+Administrator-Only Menu:
+    4. Add Item
+    5. Remove Item
+    6. Display Coins
+    7. Reset Stock
+    8. Reset Coins
+    9. Abort Program
+
+Select your option (1-9): Coins Summary
+-------------
+Denomination    |    Count
+---------------------------
+5 Cents                  18
+10 Cents                 17
+20 Cents                 15
+50 Cents                 8
+1 Dollars                16
+2 Dollars                16
+5 Dollars                11
+10 Dollars               5
+
+Main Menu
+    1. Display Items
+    2. Purchase Items
+    3. Save and Exit
+Administrator-Only Menu:
+    4. Add Item
+    5. Remove Item
+    6. Display Coins
+    7. Reset Stock
+    8. Reset Coins
+    9. Abort Program
+
+Select your option (1-9): All coins has been reset to the default amount of 20.
+
+Main Menu
+    1. Display Items
+    2. Purchase Items
+    3. Save and Exit
+Administrator-Only Menu:
+    4. Add Item
+    5. Remove Item
+    6. Display Coins
+    7. Reset Stock
+    8. Reset Coins
+    9. Abort Program
+
+Select your option (1-9): Coins Summary
+-------------
+Denomination    |    Count
+---------------------------
+5 Cents                  20
+10 Cents                 20
+20 Cents                 20
+50 Cents                 20
+1 Dollars                20
+2 Dollars                20
+5 Dollars                20
+10 Dollars               20
+
+Main Menu
+    1. Display Items
+    2. Purchase Items
+    3. Save and Exit
+Administrator-Only Menu:
+    4. Add Item
+    5. Remove Item
+    6. Display Coins
+    7. Reset Stock
+    8. Reset Coins
+    9. Abort Program
+
+Select your option (1-9): Saving Data...
+Data Saved!
+
+Goodbye!

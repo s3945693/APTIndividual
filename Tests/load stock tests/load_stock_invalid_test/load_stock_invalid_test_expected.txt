@@ -1,0 +1,2 @@
+ERROR: Price is not a number.
+ERROR: Stock amount is not a integer.
