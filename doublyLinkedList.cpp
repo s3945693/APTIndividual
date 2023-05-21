@@ -1,4 +1,4 @@
-#include "DLL.h"
+#include "doublyLinkedList.h"
 #include "Node.h"
 
 using std::cout;
@@ -6,21 +6,13 @@ using std::endl;
 using std::cin;
 using std::string;
 
-#include "DLL.h"
-#include "Node.h"
-
-using std::cout;
-using std::endl;
-using std::cin;
-using std::string;
-
-DLL::DLL() {
+doublyLinkedList::doublyLinkedList() {
     // linked list constructor 
     head = nullptr;
     tail = nullptr;
 }
 
-DLL::~DLL() {
+doublyLinkedList::~doublyLinkedList() {
     // linked list deconstructor 
     Node *temp = this->head;
     while (temp != nullptr){
@@ -30,7 +22,7 @@ DLL::~DLL() {
     }
 }
 
-void DLL::append(Node* node){
+void doublyLinkedList::append(Node* node){
     // add node to end of linked list
     if (this->head == nullptr){
         this->head = node;
@@ -45,7 +37,7 @@ void DLL::append(Node* node){
     }
 }
 
-void DLL::insertStock(Stock* stock){
+void doublyLinkedList::insertStock(Stock* stock)  {
     // insert stock alphabetically by name
     Node* node = new Node(stock);
     if (this->head == nullptr){
@@ -92,7 +84,7 @@ void DLL::insertStock(Stock* stock){
     }
 }
 
-void DLL::remove(std::string id){
+void doublyLinkedList::remove(std::string id){
     // remove node based off id
     if (this->head == nullptr){
         return;
@@ -137,13 +129,14 @@ void DLL::remove(std::string id){
     }
 }
 
-void DLL::printList(){
+void doublyLinkedList::printList(){
     // print stock
     std::cout << "Items Menu" << std::endl;
     std::cout << "----------" << std::endl;
     std::cout << "ID   |Name                                    | Available | Price  " << std::endl;
     std::cout << "-------------------------------------------------------------------" << std::endl;
     Node *temp = this->head;
+    cout<< "Stupid" << endl;
     while (temp != nullptr){
         // ID column, left-aligned, width 5
         std::cout << std::left << std::setw(5) << (*temp).data->id;
@@ -166,7 +159,7 @@ void DLL::printList(){
 }
 
 
-Stock* DLL::getItemID(string ID){
+Stock* doublyLinkedList::getItemID(string ID){
     // Get stock object based of id
     Node *temp = this->head;
     Stock *toReturn = nullptr;
@@ -182,11 +175,11 @@ Stock* DLL::getItemID(string ID){
     return toReturn;
 }
 
-int DLL::getCount(){
+int doublyLinkedList::getCount(){
     return count;
 }
 
-void DLL::resetStockCount() {
+void doublyLinkedList::resetStockCount() {
     // reset stock count
     Node *temp = this->head;
     while(temp != nullptr) {
@@ -195,7 +188,7 @@ void DLL::resetStockCount() {
     }
 }
 
-void DLL::saveStock(string _stockFile) {
+void doublyLinkedList::saveStock(string _stockFile) {
     // save stock back to stock file that was loaded
     std::ofstream stockFile(_stockFile);
     Node* temp = this->head;

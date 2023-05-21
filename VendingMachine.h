@@ -12,6 +12,7 @@
 #include "LinkedList.h"
 #include "helper.h"
 #include "Coin.h"
+#include "doublyLinkedList.h"
 
 using std::vector;
 using std::string;
@@ -28,9 +29,6 @@ class VendingMachine
         ~VendingMachine();
 
         void start();
-
-    
-    private:
 
         LinkedList* stock_list;
 

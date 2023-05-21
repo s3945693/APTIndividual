@@ -1,30 +1,27 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef DOUBLYLINKEDLIST_H
+#define DOUBLYLINKEDLIST_H
 #include "Node.h"
 #include <string> 
 #include "Coin.h"
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include "LinkedList.h"
 
-class DLL
-{
+class doublyLinkedList : public LinkedList{
 public:
-    DLL();
-    ~DLL();
+    doublyLinkedList();
+    ~doublyLinkedList();
 
     // more functions to be added perhaps...
-    void append(Node* node);
-    void insert(Node* node);
-    void insertStock(Stock* stock);
-    void remove(std::string id);
-    void printList();
-    void addItem();
+    void append(Node* node) override;
+    void insertStock(Stock* stock) override;
+    void remove(std::string id) override;
+    void printList() override;
     Stock* getItemID(std::string id);
     int getCount();
     void resetStockCount();
     void saveStock(std::string stockFile);
-
 private:
     // the beginning of the list
     Node* head;
@@ -34,4 +31,4 @@ private:
     unsigned count;
 };
 
-#endif  // LINKEDLIST_H
+#endif  // DOUBLYLINKEDLIST_H

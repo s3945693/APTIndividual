@@ -11,16 +11,14 @@ class LinkedList
 {
 public:
     LinkedList();
-    ~LinkedList();
+    virtual ~LinkedList();
 
     // more functions to be added perhaps...
-    void append(Node* node);
-    void insert(Node* node);
-    void insertStock(Stock* stock);
-    void remove(std::string id);
-    void printList();
-    void addItem();
-    Stock* getItemID(std::string id);
+    virtual void append(Node* node);
+    virtual void insertStock(Stock* stock);
+    virtual void remove(std::string id);
+    virtual void printList();
+    virtual Stock* getItemID(std::string id);
     int getCount();
     void resetStockCount();
     void saveStock(std::string stockFile);

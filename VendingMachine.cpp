@@ -1,10 +1,40 @@
 #include "VendingMachine.h"
-
+#include "command.cpp"
 VendingMachine::VendingMachine(string stockFile, string coinFile)
 {   
     coin_map = new map<Denomination, int>;
-    stock_list = new LinkedList();
+    bool loopend = false;
 
+    while (!loopend){
+        cout << "Please enter 0 for LL or 1 for DLL: ";
+        string input = Helper::readInput();
+        
+        int ci = 0;
+            //checking if input is a number
+        bool isNumber = Helper::isNumber(input);
+        if (isNumber == false) {
+            Helper::printInvalidInput();
+        }
+        else{
+            ci = stoi(input);
+            
+            if (ci == 0){
+                stock_list = new LinkedList();
+                loopend = true;
+            }
+            else if (ci == 1){
+                stock_list = new doublyLinkedList();
+                loopend = true;
+            }
+            
+            else{
+                Helper::printInvalidInput();
+            }
+        }
+    }
+
+    //TODO
+    //ASK if user wants a LL or DLL
     this->stockFile = stockFile;
     this->coinFile = coinFile;
 }
@@ -43,38 +73,35 @@ void VendingMachine::start()
             if (userMenu > 0 && userMenu < 10) {
                 // Display Items
                 if(userMenu == 1) {
-                    this->displayItems();
+                    DisplayItems(this).execute();
                 // Purchase Item
                 } else if(userMenu == 2) {
-                    this->purchaseItem();
+                    PurchaseItem(this).execute();
                 // Save and exit
                 } else if(userMenu == 3) {
-                    cout << "Saving Data..." << endl;
-                    this->saveData();
-                    cout << "Data Saved!\n" << endl;
-                    cout << "Goodbye!" << endl;
+                    SaveData(this).execute();
                     endLoop = true;
                 // Add item
                 } else if(userMenu == 4) {
-                    this->addItem();
+                    AddItem(this).execute();
                 // Remove item
                 } else if(userMenu == 5) {
-                    this->removeItem();
+                    RemoveItem(this).execute();
                 }
                 // Display coins
                 else if(userMenu == 6) {
-                    this->displayCoins();
+                    DisplayCoins(this).execute();
                 // Reset stock
                 } else if(userMenu == 7) {
-                    this->resetStock();
+                    ResetStock(this).execute();
                 } 
                 // Reset coins
                 else if(userMenu == 8) {
-                    this->resetCoinCount();
+                    ResetCoinCount(this).execute();
                 } 
                 // Abort
                 else if(userMenu == 9) {
-                    this->abort();
+                    Abort(this).execute();
                     endLoop = true;
                 }
             }
@@ -377,20 +404,17 @@ bool VendingMachine::loadStock()
 
             
             // Check correct amount of fields
-            if (tokens.size() != 6) {
+            if (tokens.size() != 5) {
                 loadSuccess = false;
                 cout << "ERROR: Incorrect amount fields in stock entry" << endl;
             }
-
-            // TODO 
-            // CHECK POSITION 1 if IT IS IN THE 2D ARRAY, IF YES NEW LIST, IF NOT, NO NEW LIST
             // Check float/int for price
-            else if (!Helper::isNumber(tokens[4])){
+            else if (!Helper::isNumber(tokens[3])){
                 loadSuccess = false;
                 cout << "ERROR: Price is not a number." << endl;
             }
             // Check int for stock
-            else if (!(Helper::isNumber(tokens[5]) && tokens[4].find(".") == std::string::npos)){
+            else if (!(Helper::isNumber(tokens[4]) && tokens[4].find(".") == std::string::npos)){
                 loadSuccess = false;
                 cout << "ERROR: Stock amount is not a integer." << endl;
             }
@@ -399,20 +423,21 @@ bool VendingMachine::loadStock()
 
                 Stock* data = new Stock;
 
-                data->id = tokens[1];
-                data->name = tokens[2];
-                data->description = tokens[3];
+                data->id = tokens[0];
+                data->name = tokens[1];
+                data->description = tokens[2];
                 
                 // Seperating the Dollar and Cent
-                int tempDollar = std::stoi(tokens[4]);
-                float tempPrice = std::stof(tokens[4]);
+                int tempDollar = std::stoi(tokens[3]);
+                float tempPrice = std::stof(tokens[3]);
                 int result = static_cast<int>((tempPrice - tempDollar) * 100);
 
                 data->price.dollars = tempDollar;
                 data->price.cents =  result;
 
-                data->on_hand = std::stoul(tokens[5]);
-
+                data->on_hand = std::stoul(tokens[4]);
+                //next linke for debugging
+                ///cout <<  data->id << " " << data->name << " " << data->description << " " << data->price.dollars << "." << data->price.cents << " " << data->on_hand << endl;
                 stock_list->insertStock(data);
             }
         }
@@ -493,6 +518,9 @@ void VendingMachine::saveData()
     outfile.close();
     
     stock_list->saveStock(stockFile);
+    cout << "Data Saved!\n" << endl;
+    cout << "Goodbye!" << endl;
+
 }
 
 void VendingMachine::abort()

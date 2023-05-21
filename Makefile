@@ -5,7 +5,7 @@ all: ppd
 clean:
 	rm -rf ppd *.o *.dSYM
 
-ppd: Coin.o Node.o LinkedList.o ppd.o helper.o VendingMachine.o
+ppd: Coin.o Node.o LinkedList.o ppd.o helper.o VendingMachine.o doublyLinkedList.o command.o
 	g++ -Wall -Werror -std=c++14 -g -O -o $@ $^
 	
 %.o: %.cpp
