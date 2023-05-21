@@ -27,6 +27,8 @@ private:
     Node* head;
     // the end of the list
     Node* tail;
+
+    Node* middle;
     // how many nodes are there in the list?
     unsigned count;
 };
