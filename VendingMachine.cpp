@@ -1,5 +1,6 @@
 #include "VendingMachine.h"
 #include "command.cpp"
+#include "colours.h"
 VendingMachine::VendingMachine(string stockFile, string coinFile)
 {   
     coin_map = new map<Denomination, int>;
@@ -194,8 +195,8 @@ void VendingMachine::purchaseItem()
     if(foundStock != nullptr && foundStock->on_hand > 0)
     {
         cout << "You have selected \"" << foundStock->name << " - " << foundStock->description 
-        << "\". This will cost you $ " << foundStock->price.dollars 
-        << "." << foundStock->price.cents << "." << endl;
+        << "\". This will cost you "<< FG_RED << "$" << foundStock->price.dollars 
+        << "." << foundStock->price.cents << RESET_FORMATTING << "." << endl;
 
         cout << "Please hand over the money - type in the value of each note/coin in cents." << endl;
         cout << "Please enter or ctrl-d on a new line to cancel this purchase:" << endl;
@@ -217,7 +218,7 @@ void VendingMachine::purchaseItem()
         bool endLoop = false;
         while(remaining > 0 && !endLoop)
         {
-            cout << "You still need to give us $" << std::fixed << std::setprecision(2) << remaining / 100 << ": ";
+            cout << "You still need to give us "<< FG_RED << "$"<< std::fixed << std::setprecision(2) << remaining / 100 << RESET_FORMATTING <<": ";
             string input = Helper::readInput();
             // Check if user pressed Ctrl+D
             if(std::cin.eof()) {
@@ -267,8 +268,8 @@ void VendingMachine::purchaseItem()
                             // returns empty string if didn't have enough change
                             string formattedChange = this->giveChange(change, *purchaseMethodCoinMap);
                             if (!formattedChange.empty()){
-                                cout << "Here is your " << foundStock->name << " and your change of $ " << std::fixed 
-                                << std::setprecision(2) << change / 100 << ": " << formattedChange << endl;
+                                cout << "Here is your " << foundStock->name << " and your change of "<<FG_GREEN <<" $" << std::fixed 
+                                << std::setprecision(2) << change / 100 << ": " << formattedChange << RESET_FORMATTING<<endl;
                                 
                                 // Update the coin_map to be the purchaseMethodCoinMap
                                 coin_map->swap(*purchaseMethodCoinMap);

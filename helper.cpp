@@ -1,6 +1,7 @@
 #include "helper.h"
 #include <cstdlib>
 #include <ostream>
+#include "colours.h"
 using std::string;
 using std::vector;
 
@@ -10,7 +11,7 @@ Helper::Helper(){}
 void Helper::printInvalidInput()
 {
     // Print out Invalid input in the colour red
-    std::cout << "Invalid input." << "\n" << std::endl;
+    std::cout << FG_RED << "Invalid input." << RESET_FORMATTING << "\n" << std::endl;
 }
 
 // from Assigment 1 starter code
