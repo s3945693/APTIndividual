@@ -110,6 +110,10 @@ void VendingMachine::start()
     }
 }
 
+void VendingMachine::execute(Command& command){
+        command.execute();
+}
+
 void VendingMachine::displayMenu()
 {
     // display menu options

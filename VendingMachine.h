@@ -13,7 +13,7 @@
 #include "helper.h"
 #include "Coin.h"
 #include "doublyLinkedList.h"
-
+#include "command.cpp"
 using std::vector;
 using std::string;
 using std::map;
@@ -33,6 +33,8 @@ class VendingMachine
         LinkedList* stock_list;
 
         map<Denomination, int>* coin_map;
+
+        void execute(Command& command);
 
         bool loadStock();
 
