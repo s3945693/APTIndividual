@@ -181,7 +181,6 @@ void doublyLinkedList::printList(){
     std::cout << "ID   |Name                                    | Available | Price  " << std::endl;
     std::cout << "-------------------------------------------------------------------" << std::endl;
     Node *temp = this->head;
-    cout<< "Stupid" << endl;
     while (temp != nullptr){
         // ID column, left-aligned, width 5
         std::cout << std::left << std::setw(5) << (*temp).data->id;
