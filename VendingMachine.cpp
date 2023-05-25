@@ -6,34 +6,8 @@ VendingMachine::VendingMachine(string stockFile, string coinFile)
     coin_map = new map<Denomination, int>;
     bool loopend = false;
 
-    while (!loopend){
-        cout << "Please enter 0 for LL or 1 for DLL: ";
-        string input = Helper::readInput();
-        
-        int ci = 0;
-            //checking if input is a number
-        bool isNumber = Helper::isNumber(input);
-        if (isNumber == false) {
-            Helper::printInvalidInput();
-        }
-        else{
-            ci = stoi(input);
-            
-            if (ci == 0){
-                stock_list = new LinkedList();
-                loopend = true;
-            }
-            else if (ci == 1){
-                stock_list = new doublyLinkedList();
-                loopend = true;
-            }
-            
-            else{
-                Helper::printInvalidInput();
-            }
-        }
-    }
 
+    stock_list = new doublyLinkedList();
     //TODO
     //ASK if user wants a LL or DLL
     this->stockFile = stockFile;
