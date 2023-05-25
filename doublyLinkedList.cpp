@@ -6,6 +6,13 @@ using std::endl;
 using std::cin;
 using std::string;
 
+/*
+ Did not change much from a normal linked list. Big changes only in insert stock.
+ Introduced a new variable to node, known as middle which stores the middle node of the linked list.
+ This makes insertion more efficient.
+
+*/
+
 doublyLinkedList::doublyLinkedList() {
     // linked list constructor 
     head = nullptr;
