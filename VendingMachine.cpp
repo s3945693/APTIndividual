@@ -4,9 +4,6 @@
 VendingMachine::VendingMachine(string stockFile, string coinFile)
 {   
     coin_map = new map<Denomination, int>;
-    bool loopend = false;
-
-
     stock_list = new doublyLinkedList();
     //TODO
     //ASK if user wants a LL or DLL
